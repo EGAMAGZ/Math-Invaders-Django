@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cq(3$lc7uab_4vp)&*3p9*@^b7ya#$+t*l%p9&&op7q6h)gwjz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'MathInvaders.urls'
@@ -119,4 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles')
 # heroku config:set DISABLE_COLLECTSTATIC=1
+
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR,'static'),
+)
+
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
