@@ -1,0 +1,587 @@
+@import url("https://fonts.googleapis.com/css?family=Righteous");
+@import url("https://fonts.googleapis.com/css?family=Rajdhani");
+@import url("https://fonts.googleapis.com/css?family=Orbitron");
+@import url("https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c");
+@import url('https://fonts.googleapis.com/css?family=Bangers');
+@import url('https://fonts.googleapis.com/css?family=Aldrich');
+
+:root {
+  /* FUENTES */
+  --font-juego1: "Righteous", cursive;
+  --font-juego2: "Rajdhani", sans-serif;
+  --font-juego3: "Orbitron", sans-serif;
+  --font-juego4:'Aldrich', sans-serif;
+  --font-texto1: "M PLUS Rounded 1c", sans-serif;
+  --font-texto2:'Bangers', cursive;
+  /* CONFIGURACION DE PLANETAS */
+  --color-inicial-planetaprinc: #000986, #080077, #000530;
+
+  /* colores */
+  --color-borde1: #b9b9b9;
+  --color-borde2: #e0e0e0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* overflow: hidden; */
+}
+body {
+  background: #15141b;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+.sun {
+  width: 400px;
+  height: 400px;
+  border-radius: 200px;
+  border: 1em solid #d47902bd;
+  background: #fae900;
+  box-shadow: #fae100 0 0 250px;
+  position: absolute;
+  top: 5em;
+  left: -20em;
+  animation: sol-mov 15s, aumento-sol 8s infinite;
+  filter: blur(5px);
+  z-index: 4;
+}
+@keyframes aumento-sol {
+  0% {
+    border: 1em solid #d47902bd;
+    filter: blur(5px);
+  }
+  50% {
+    border: 2em solid #d47902bd;
+    filter: blur(15px);
+  }
+  100% {
+    border: 1em solid #d47902bd;
+    filter: blur(5px);
+  }
+}
+
+@keyframes sol-mov {
+  0% {
+    left: -30em;
+  }
+  50% {
+    left: -15em;
+  }
+  100% {
+    left: -20em;
+  }
+}
+
+.login-container {
+  position: absolute;
+  z-index: 3;
+  top: 10em;
+  right: 30em;
+}
+.planet {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  border: 2px solid #202020;
+  background-image: url("../img/mapa\ mundo\ normal.jpg");
+  background-size: cover;
+  box-shadow: -30px -20px 0 0 rgba(0, 0, 0, 0.1) inset,
+    -70px -30px 0 0 rgba(0, 0, 0, 0.1) inset,
+    5px 5px 0 0 rgba(255, 255, 255, 0.2) inset;
+  animation: giro-tierra 7s infinite linear;
+  z-index: 7;
+}
+
+@keyframes giro-tierra {
+  from {
+    background-position: left center;
+  }
+  to {
+    background-position: -400px center;
+  }
+}
+
+.planet::after {
+  content: "MATH INVADERS";
+  font-family: var(--font-juego1);
+  font-size: 2em;
+  background: #000000;
+  border: 0.2em solid #ffffff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  width: auto;
+  top: -1em;
+  display: none;
+  transition: 1s all ease;
+  transform: rotateZ(-5deg);
+  box-shadow: rgba(0, 0, 0, 0.562) 0px 5px 30px;
+  font-weight: bold;
+  text-shadow: rgba(255, 255, 255, 0.562) 5px 5px 5px;
+}
+
+.planet:hover::after {
+  display: block;
+  animation: titulo-mov 0.5s linear;
+}
+@keyframes titulo-mov {
+  0% {
+    display: block;
+    transform: rotateZ(0deg);
+    z-index: -1;
+  }
+  40% {
+    top: -3em;
+  }
+  90% {
+    top: -1em;
+  }
+  100% {
+    transform: rotateZ(-5deg);
+    z-index: 4;
+  }
+}
+.play {
+  width: auto;
+  background: #fae100;
+  color: #ffffff;
+  content: "Jugar";
+  position: absolute;
+  top: none;
+  font-family: var(--font-juego2);
+  border-radius: 5px;
+  font-size: 3em;
+  padding: 2px 5px;
+  left: 50%;
+  transition: 0.5s all linear;
+  bottom: -1em;
+  display: none;
+  font-weight: bold;
+  transform: rotateZ(5deg);
+}
+.planet:hover .play {
+  display: block;
+  animation: play-mov 0.5s linear;
+}
+@keyframes play-mov {
+  0% {
+    bottom: 200px;
+    z-index: 1;
+    transform: rotateZ(0deg);
+  }
+  60% {
+    bottom: -1em;
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(5deg);
+    /* right: .5em; */
+  }
+}
+.planet .nave {
+  width: 0;
+  height: 0;
+  border-left: 50px solid #5f5f5f;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  position: absolute;
+  top: 100px;
+  left: 300px;
+  display: none;
+  transform: rotateZ(180deg);
+}
+.planet:hover .nave {
+  display: block;
+  animation: mov-nave 5s linear infinite;
+  left: -3em;
+}
+@keyframes mov-nave {
+  0% {
+    left: 300px;
+  }
+  30% {
+    top: 50px;
+    left: -50px;
+    transform: rotateZ(225deg);
+  }
+  60% {
+    top: 100px;
+    left: -300px;
+    transform: rotateZ(0deg);
+  }
+  90% {
+    top: 100px;
+    left: 300px;
+    transform: rotateZ(0deg);
+  }
+  100% {
+    top: 100px;
+    left: 300px;
+    transform: rotateZ(180deg);
+  }
+}
+
+.form-jugar {
+  position: fixed;
+  background: white;
+  color: #000000;
+  bottom: -30em;
+  width: 30%;
+  left: 20em;
+  border-radius: 10px 10px 0 0;
+  transition: 0.3s all linear;
+  box-shadow: var(--color-borde2) 0px 0px 20px;
+  z-index: 20;
+}
+
+.form-jugar form {
+  padding: 1em;
+}
+.form-jugar form h2 {
+  text-align: center;
+  font-family: var(--font-texto1);
+  border-bottom: 2px solid #000000;
+}
+
+.form-jugar form input[type="text"]{
+  width: 90%;
+  display: inline-block;
+  border: 1px solid var(--color-borde1);
+  padding: 0.7em;
+  font-size: 1em;
+  margin-top: 1em;
+  transition: 0.3s all linear;
+}
+
+
+.form-jugar form button {
+  padding: 10px 20px;
+  width: 100%;
+  font-family: var(--font-texto1);
+  font-size: 1em;
+  border-radius: 0.5em;
+  display: inline-block;
+  margin-top: 1em;
+  transition: 0.3s all ease;
+}
+
+.form-jugar form button:hover {
+  box-shadow: #fae100 0px 0px 35px;
+  background: rgba(255, 251, 4, 0.911);
+}
+
+.planeta2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../img/jupiter.jpg");
+  background-size: cover;
+  top: 20em;
+  left: -15em;
+  border-radius: 50%;
+  box-shadow: -15px -10px 0 0 rgba(0, 0, 0, 0.1) inset,
+    -35px -15px 0 0 rgba(0, 0, 0, 0.1) inset,
+    2px 2px 0 0 rgba(255, 255, 255, 0.2) inset;
+  border: 2px solid #202020;
+  animation: jupiter-mov 20s infinite linear,
+    jupiter-traslacion 30s infinite linear 10s;
+  z-index: 10;
+}
+@keyframes jupiter-mov {
+  from {
+    background-position: left center;
+  }
+  to {
+    background-position: -360px center;
+  }
+}
+@keyframes jupiter-traslacion {
+  0% {
+    top: 20em;
+    left: -15em;
+  }
+  20% {
+    left: 30em;
+    top: 13em;
+    z-index: 2;
+  }
+  30% {
+    top: 10em;
+  }
+  40% {
+    top: 7em;
+    left: -15em;
+    z-index: 2;
+  }
+  50% {
+    top: 20em;
+    left: -15em;
+    z-index: 10;
+  }
+}
+
+.planeta2::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  background: #5f5f5f;
+  left: -3em;
+  top: 10px;
+  animation: nav-jup-1 10s infinite linear;
+  border: 2px solid var(--color-borde1);
+}
+@keyframes nav-jup-1 {
+  0% {
+    left: -3em;
+    top: 10px;
+    z-index: 1;
+  }
+  40% {
+    z-index: 1;
+  }
+  50% {
+    left: 7em;
+    z-index: -2;
+  }
+  100% {
+    left: -3em;
+    top: 10px;
+    z-index: 1;
+  }
+}
+
+.fondo-sistema {
+  background-image: url("../img/estrellasAcabado.png");
+  background-size: cover;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* filter: opacity(0.9) blur(1px) */
+  animation: fondo-animation 6s infinite ease-in-out;
+}
+
+@keyframes fondo-animation {
+  0% {
+    filter: opacity(0.9) blur(3px);
+  }
+  50% {
+    filter: opacity(0.9) blur(1px);
+  }
+  100% {
+    filter: opacity(0.9) blur(3px);
+  }
+}
+
+.form-register {
+  position: fixed;
+  background: white;
+  color: #000000;
+  top: -30em;
+  width: 30%;
+  left: 20em;
+  border-radius: 0 0 10px 10px;
+  transition: 0.3s all linear;
+  box-shadow: var(--color-borde2) 0px 0px 20px;
+  z-index: 20;
+}
+
+.form-register form {
+  padding: 1em;
+}
+
+.form-register form h2 {
+  text-align: center;
+  font-family: var(--font-texto1);
+  border-bottom:2px solid black 
+}
+.form-register form input[type="text"] {
+  width: 90%;
+  display: inline-block;
+  border: 1px solid var(--color-borde1);
+  padding: 0.7em;
+  font-size: 1em;
+  margin-top: 1em;
+}
+
+.form-register form input[type="text"]:focus {
+  border-radius: 10px;
+  transform: scale(1.2);
+}
+
+.form-register form button{
+  padding: 10px 20px;
+  width: 100%;
+  font-family: var(--font-texto1);
+  font-size: 1em;
+  border-radius: 0.5em;
+  display: inline-block;
+  margin-top: 1em;
+  transition: 0.3s all ease;
+}
+
+.form-register form button:hover {
+  box-shadow: #fae100 0px 0px 35px;
+  background: rgba(255, 251, 4, 0.911);
+}
+
+ #register {
+  text-decoration: none;
+  font-family: var(--font-juego2);
+  font-size: 1.5em;
+  display: inline-block;
+  margin-top: .5em;
+  padding:5px 10px;
+  transition: 0.6s all ease
+}
+#register:hover {
+  background: var(--color-borde1);
+  border-radius: 5px;
+  letter-spacing: .5em;
+  font-weight: bolder;
+} 
+.anuncio-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  background-color: rgba(80, 80, 80, 0.836);
+  z-index: 30;
+  justify-content: center;
+  align-items: center;
+}
+.anuncio {
+  width: 40%;
+  background: white;
+  border-radius: 10px;
+  border: 4px solid var(--color-borde1);
+  padding: 10px 20px;
+  position: relative;
+  color: #000000;
+  animation: 1s anuncio-apperance linear;
+}
+@keyframes anuncio-apperance {
+  0% {
+    transform: scale(0.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.anuncio h2 {
+  font-family: var(--font-juego3);
+  border-bottom-width: 50%;
+  border-bottom: 2px solid #000000;
+}
+.anuncio .desc {
+  font-family: var(--font-juego2);
+  font-size: 1.2em;
+  padding-top: 1em;
+}
+#close-advice {
+  position: absolute;
+  z-index: 1;
+  font-family: var(--font-juego1);
+  top: 0em;
+  right: 0em;
+  background: #ffffff;
+  padding: 5px 10px;
+  border: 2px solid var(--color-borde2);
+  border-radius: 5px;
+  transition: 0.3s all linear;
+}
+#close-advice:hover {
+  transform: scale(1.5);
+}
+#close-advice::before {
+  position: absolute;
+  z-index: -2;
+  content: "Cerrar";
+  top: -1.5em;
+  left: 0;
+  display: none;
+  text-decoration: underline white;
+}
+#close-advice:hover::before {
+  display: block;
+}
+.img-operacion {
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  right: -3em;
+  bottom: -3em;
+  transform: rotateZ(45deg);
+  animation: 3s operacion-move linear 1s infinite;
+}
+@keyframes operacion-move {
+  0% {
+    transform: rotateZ(45deg);
+  }
+  20% {
+    transform: rotateZ(25deg);
+  }
+  60% {
+    transform: rotateZ(25deg);
+  }
+  100% {
+    transform: rotateZ(405deg);
+  }
+}
+.img-nave {
+  width: 8em;
+  height: 8em;
+  position: absolute;
+  top: -5em;
+  left: -5em;
+  transform: rotateZ(-10deg);
+  animation: 3s nave-move linear infinite;
+}
+@keyframes nave-move {
+  0% {
+    transform: scale(1) rotateZ(-10deg);
+  }
+  30% {
+    transform: scale(1.2) rotateZ(-10deg);
+  }
+  40% {
+    transform: scale(1) rotateZ(-10deg);
+  }
+  70% {
+    transform: scale(1.2) rotateZ(-10deg);
+  }
+  80% {
+    transform: scale(1) rotateZ(-10deg);
+  }
+}
+
+.PressStart{
+  text-align: center;
+  font-family: var(--font-juego4);
+  font-size: 1.5em;
+  padding:1em;
+  color:#df0505;
+  font-weight: bolder;
+  animation: 1s game-move ease-in-out infinite
+}
+@keyframes game-move{
+  0%{
+    color:#ffffff
+  }
+  50%{
+    color:#df0505;
+  }
+  100%{
+    color:#ffffff
+}
+}
+
+
+/*  Reescalar   */

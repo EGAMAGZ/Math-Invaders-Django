@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block staticfiles %}
+<link href="{% static 'core/css/main.css' %}" rel="stylesheet" >
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="sun"></div>
+    <div class="login-container">
+        <div class="planet">
+            <button id="play" class="play">Jugar!</button>
+            <div class="nave"></div>
+        </div>
+    </div>
+    <div class="form-jugar">
+        <form action="levelSelection.jsp" name="formLogin" method="POST">
+            <h2>Ingresa</h2>
+            <input type="text" name="usr" placeholder="usuario" required>
+            <input type="text" name="mail" placeholder="Contraseña" required>
+            <input type="submit" name="btnLogIn" value="Iniciar sesion">
+        </form>
+            <a id="register">Registrarme</a>
+    </div>
+    <div class="form-register">
+        <form action="levelSelection.jsp" name="formRegister" method="POST">
+            <h2> Registrar:</h2>
+            <input type="text" name="usr" placeholder="usuario" required>
+            <input type="text" name="pass1" placeholder="password" required>
+            <input type="text" name="pass2" placeholder="password" required>
+            <input type="text" name="mail" placeholder="email" required>
+            <input type="submit" name="btnRegister" value="Registrarte">
+        </form>
+    </div>
+    <div class="planeta2"></div>
+    <div class="fondo-sistema"></div>
+    <div class="anuncio-container">
+        <div class="anuncio">
+            <h2>Bienvenido a Math Invaders</h2>
+            <p class="desc">Nuestro juego es desarrollado con el propósito de fomentar una forma de aprendizaje
+                dinámico de las matemáticas.</p>
+            <a id="close-advice">X</a>
+            <p class="PressStart">Presiona cualquier tecla</p>
+            <img class="img-operacion" src="{% static 'core/img/suma.png' %}">
+            <img class="img-nave" src="{% static 'core/img/Invader_3-512.png' %}">
+        </div>
+    </div>
+{% endblock %}
+
+{% block jsfiles %}
+<script src="{% static 'core/js/index.js' %}"></script>
+{% endblock %}
