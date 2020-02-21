@@ -1,0 +1,1 @@
+web: gunicorn MathInvaders.wsgi --log-file -
