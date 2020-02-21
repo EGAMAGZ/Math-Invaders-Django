@@ -1,6 +1,3 @@
-$("#play").on("click", function() {
-});
-
 $(document).on("ready", function() {
   $(this).keydown(function(event) {
     var anuncio_display = $(".anuncio-container").css("display");
@@ -9,7 +6,6 @@ $(document).on("ready", function() {
     }
   });
 });
-
 $("#close-advice").on("click", function() {
   $(".anuncio-container").css({ display: "none" });
 });
