@@ -1,3 +1,4 @@
+alert("Hola");
 $(document).on("ready", function() {
   $(this).keydown(function(event) {
     var anuncio_display = $(".anuncio-container").css("display");
