@@ -1,15 +1,9 @@
-// $(document).on("ready", function() {
-//   $(this).keydown(function(event) {
-//     var anuncio_display = $(".anuncio-container").css("display");
-//     if (anuncio_display === "flex") {
-//       $(".anuncio-container").css({ display: "none" });
-//     }
-//   });
-// });
-$("#close-advice").on("click", function() {
-  $(".anuncio-container").css({ display: "none" });
-});
 
-function display_alert() {
-  $(".anuncio-container").css({ display: "flex" });
-}
+var close_advice=document.getElementById("close-advice").onclick=()=>document.getElementById("advice-container").style.display=none;
+// $("#close-advice").on("click", function() {
+//   $(".advice-container").css({ display: "none" });
+// });
+
+// function display_alert() {
+//   $(".advice-container").css({ display: "flex" });
+// }
