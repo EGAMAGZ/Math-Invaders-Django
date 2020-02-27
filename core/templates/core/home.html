@@ -4,32 +4,31 @@
 
 {% block staticfiles %}
 <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block content %}
 
 <div class="sun"></div>
-    <div class="login-container">
-        <div class="planet">
-            <button id="play" class="play">Jugar!</button>
-            <div class="nave"></div>
-        </div>
+<div class="login-container">
+    <div class="planet">
+        <button id="play" class="play">Jugar!</button>
+        <div class="nave"></div>
     </div>
-    
-    <div class="planeta2"></div>
-    <div class="fondo-sistema"></div>
-    <div class="advice-container" id="advice-container">
-        <div class="advice">
-            <h2>Bienvenido a Math Invaders</h2>
-            <p class="desc">Nuestro juego es desarrollado con el propósito de fomentar una forma de aprendizaje
-                dinámico de las matemáticas.</p>
-            <a id="close-advice">X</a>
-            <p class="PressStart">Click en X para cerrar</p>
-            <img class="img-operacion" src="{% static 'core/img/suma.png' %}">
-            <img class="img-nave" src="{% static 'core/img/Invader_3-512.png' %}">
-        </div>
+</div>
+
+<div class="planeta2"></div>
+<div class="fondo-sistema"></div>
+<div class="advice-container" id="advice-container">
+    <div class="advice">
+        <h2>Bienvenido a Math Invaders</h2>
+        <p class="desc">Nuestro juego es desarrollado con el propósito de fomentar una forma de aprendizaje
+            dinámico de las matemáticas.</p>
+        <a id="close-advice">X</a>
+        <p class="PressStart">Click en X para cerrar</p>
+        <img class="img-operacion" src="{% static 'core/img/suma.png' %}">
+        <img class="img-nave" src="{% static 'core/img/Invader_3-512.png' %}">
     </div>
+</div>
 {% endblock %}
 
 {% block jsfiles %}
